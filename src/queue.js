@@ -30,13 +30,24 @@ class Queue {
       this.head = newNode;
       this.last = newNode;
     } else {
+      this.last.next = newNode;
       this.last = newNode;
     }
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.head) {
+      return null;
+    }
+
+    const value = this.head.value;
+    this.head = this.head.next;
+
+    if (!this.head) {
+      this.last = null;
+    }
+
+    return value;
   }
 }
 
